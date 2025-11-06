@@ -45,6 +45,10 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
+tasks.jar{
+    destinationDirectory = file("C:\\Users\\Yael\\Documents\\GitHub\\Watchover\\out")
+}
+
 processResources {
     def props = [version: version]
     inputs.properties props

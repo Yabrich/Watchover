@@ -1,9 +1,0 @@
-global_config:
-  compass_wo: true
-  fly_essentials: true
-  lien_msg_ban: ''
- 
-#NE PAS MODIFIER !
-id_sanctions: 0
-joueurs:
-  
