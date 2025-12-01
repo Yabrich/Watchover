@@ -3,3 +3,8 @@ version: '2.0-SNAPSHOT'
 main: fr.yabrich.watchover.Main
 api-version: '1.21'
 authors: [ Yabrich ]
+commands:
+  vanish:
+    description: Active l'invisibilité pour les autres joueurs.
+  nv:
+    description: Active la vision nocturne.
