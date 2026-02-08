@@ -2,8 +2,11 @@ package fr.yabrich.watchover;
 
 import fr.yabrich.watchover.commands.CommandNv;
 import fr.yabrich.watchover.commands.CommandVanish;
+import fr.yabrich.watchover.listeners.VanishListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public final class Main extends JavaPlugin {
 
@@ -14,9 +17,12 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         Bukkit.getConsoleSender().sendMessage("ça marche super!");
         setInstance(this);
-        setPrefix("§4[§6WatchOver§4] §r ");
-        getCommand("vanish").setExecutor(new CommandVanish());
-        getCommand("nv").setExecutor(new CommandNv());
+        setPrefix("§4[§6WatchOver§4] §r");
+        Objects.requireNonNull(getCommand("vanish")).setExecutor(new CommandVanish());
+        Objects.requireNonNull(getCommand("nv")).setExecutor(new CommandNv());
+
+        getServer().getPluginManager().registerEvents(new VanishListener(), this);
+
     }
 
     @Override
