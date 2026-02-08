@@ -1,6 +1,7 @@
 package fr.yabrich.watchover.commands;
 
 import fr.yabrich.watchover.Main;
+import fr.yabrich.watchover.utils.PlayerVanish;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,21 +9,22 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class CommandVanish implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if(commandSender instanceof Player){
-            Player player = (Player)commandSender;
-
-            Collection<? extends Player> playerlist = Bukkit.getOnlinePlayers();
-
-            for(Player p : playerlist){
-                p.hidePlayer(Main.getInstance(),player);
+        if(commandSender instanceof Player player){
+            if(!PlayerVanish.isPlayerVanished(player)){
+                PlayerVanish.vanishPlayer(player);
+                player.sendMessage(Main.getPrefix()+"§3Vanish §aactivé§3 !");
+            }
+            else{
+                PlayerVanish.unvanishPlayer(player);
+                player.sendMessage(Main.getPrefix()+"§3Vanish §4désactivé§3 !");
             }
 
-            player.sendMessage(Main.getPrefix()+"§3Vanish §aactivé§3 !");
         }
         return false;
     }
