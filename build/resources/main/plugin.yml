@@ -14,3 +14,5 @@ commands:
     description: Donne des informations sur l'item tenu en main.
   s:
     description: Téléporte un joueur à sa position.
+  wo:
+    description: Passe en mode modération.
