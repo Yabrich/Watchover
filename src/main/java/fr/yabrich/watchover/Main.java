@@ -2,6 +2,7 @@ package fr.yabrich.watchover;
 
 import fr.yabrich.watchover.commands.*;
 import fr.yabrich.watchover.listeners.VanishListener;
+import fr.yabrich.watchover.listeners.WatchOverListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,8 +24,22 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new CommandSpawn());
         Objects.requireNonNull(getCommand("id")).setExecutor(new CommandId());
         Objects.requireNonNull(getCommand("s")).setExecutor(new CommandTPHere());
+        Objects.requireNonNull(getCommand("wo")).setExecutor(new CommandWatchOver());
 
         getServer().getPluginManager().registerEvents(new VanishListener(), this);
+        getServer().getPluginManager().registerEvents(new WatchOverListener(), this);
+
+        Bukkit.getConsoleSender().sendMessage("""
+                
+                 _    _       _       _     _____               \s
+                | |  | |     | |     | |   |  _  |              \s
+                | |  | | __ _| |_ ___| |__ | | | |_   _____ _ __\s
+                | |/\\| |/ _` | __/ __| '_ \\| | | \\ \\ / / _ \\ '__|
+                \\  /\\  / (_| | || (__| | | \\ \\_/ /\\ V /  __/ |  \s
+                 \\/  \\/ \\__,_|\\__\\___|_| |_|\\___/  \\_/ \\___|_|  \s
+                                                                \s
+                                                                \s
+                              Developped by Yabrich""");
 
     }
 
