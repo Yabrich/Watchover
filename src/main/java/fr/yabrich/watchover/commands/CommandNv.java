@@ -17,7 +17,7 @@ public class CommandNv implements CommandExecutor {
 
             if(player.getPotionEffect(nv) == null) {
                 player.addPotionEffect(new PotionEffect(nv, Integer.MAX_VALUE, 0));
-                player.sendMessage(Main.getPrefix()+"§3Vision Nocturne §2activée §3!");
+                player.sendMessage(Main.getPrefix()+"§3Vision Nocturne §aactivée §3!");
             }
             else {
                 player.removePotionEffect(nv);

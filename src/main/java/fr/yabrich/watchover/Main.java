@@ -1,7 +1,6 @@
 package fr.yabrich.watchover;
 
-import fr.yabrich.watchover.commands.CommandNv;
-import fr.yabrich.watchover.commands.CommandVanish;
+import fr.yabrich.watchover.commands.*;
 import fr.yabrich.watchover.listeners.VanishListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,14 +11,18 @@ public final class Main extends JavaPlugin {
 
     static Main instance;
     static String prefix;
+    static String errPrefix;
 
     @Override
     public void onEnable() {
-        Bukkit.getConsoleSender().sendMessage("ça marche super!");
         setInstance(this);
-        setPrefix("§4[§6WatchOver§4] §r");
+        setPrefix("§4[§6WatchOver§4] §3");
+        setErrPrefix("§4[§cWO Error§4] §c");
         Objects.requireNonNull(getCommand("vanish")).setExecutor(new CommandVanish());
         Objects.requireNonNull(getCommand("nv")).setExecutor(new CommandNv());
+        Objects.requireNonNull(getCommand("spawn")).setExecutor(new CommandSpawn());
+        Objects.requireNonNull(getCommand("id")).setExecutor(new CommandId());
+        Objects.requireNonNull(getCommand("s")).setExecutor(new CommandTPHere());
 
         getServer().getPluginManager().registerEvents(new VanishListener(), this);
 
@@ -44,5 +47,13 @@ public final class Main extends JavaPlugin {
 
     public static void setPrefix(String prefix) {
         Main.prefix = prefix;
+    }
+
+    public static String getErrPrefix() {
+        return errPrefix;
+    }
+
+    public static void setErrPrefix(String errPrefix) {
+        Main.errPrefix = errPrefix;
     }
 }
