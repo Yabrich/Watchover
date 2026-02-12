@@ -8,3 +8,9 @@ commands:
     description: Active l'invisibilité pour les autres joueurs.
   nv:
     description: Active la vision nocturne.
+  spawn:
+    description: Téléporte au spawn.
+  id:
+    description: Donne des informations sur l'item tenu en main.
+  s:
+    description: Téléporte un joueur à sa position.

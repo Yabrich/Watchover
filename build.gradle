@@ -41,6 +41,7 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.jar{
     destinationDirectory = file("out")
+    //destinationDirectory = file("C:\\Users\\Yabrich\\Documents\\localserver\\plugins")
 }
 
 processResources {
