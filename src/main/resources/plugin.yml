@@ -30,4 +30,5 @@ commands:
     permission: wo
   spycmd:
     description: Affiche les commandes executées
+    aliases: [cmdspy]
     permission: wo

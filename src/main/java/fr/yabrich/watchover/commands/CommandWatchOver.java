@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static fr.yabrich.watchover.commands.CommandSpy.spyActived;
+
 public class CommandWatchOver implements CommandExecutor {
 
     static HashMap<Player, ItemStack[]> inventories = new HashMap<>();
@@ -35,6 +37,10 @@ public class CommandWatchOver implements CommandExecutor {
                 player.getInventory().setContents(WOInv.getContents());
                 PlayerVanish.vanishPlayer(player);
                 woActived.add(player);
+
+                if (!spyActived.contains(player)) {
+                    player.performCommand("watchover:spycmd");
+                }
 
                 player.sendMessage(Main.getPrefix()+"Menu modération §aactivé §3!");
                 player.sendMessage(Main.getPrefix()+"Vanish §aactivé§3 !");
