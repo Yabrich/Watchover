@@ -106,14 +106,14 @@ public class WatchOverListener implements Listener {
 
             // Alert
             if(itemName.equalsIgnoreCase("§c§lAlert")){
-                player.performCommand("watchover:alert "+targetPlayer.getDisplayName());
+                player.performCommand("watchover:alert "+targetPlayer.getName());
                 return;
             }
 
             // Freeze
             if(itemName.equalsIgnoreCase("§9§lFreeze")){
                 e.setCancelled(true);
-                player.performCommand("watchover:freeze "+targetPlayer.getDisplayName());
+                player.performCommand("watchover:freeze "+targetPlayer.getName());
             }
         }
     }

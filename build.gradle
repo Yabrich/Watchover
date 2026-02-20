@@ -20,7 +20,7 @@ dependencies {
 
 tasks {
     runServer {
-        minecraftVersion("1.21.8") // ou "1.21" si tu veux
+        minecraftVersion("1.21.1")
     }
 }
 

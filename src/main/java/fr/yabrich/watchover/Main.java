@@ -1,10 +1,8 @@
 package fr.yabrich.watchover;
 
 import fr.yabrich.watchover.commands.*;
-import fr.yabrich.watchover.listeners.FreezeListener;
-import fr.yabrich.watchover.listeners.SpyListener;
-import fr.yabrich.watchover.listeners.VanishListener;
-import fr.yabrich.watchover.listeners.WatchOverListener;
+import fr.yabrich.watchover.listeners.*;
+import fr.yabrich.watchover.tabcompleters.CompleterTrack;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,6 +19,7 @@ public final class Main extends JavaPlugin {
         setInstance(this);
         setPrefix("§4[§6WatchOver§4] §3");
         setErrPrefix("§4[§cWO Error§4] §c");
+
         Objects.requireNonNull(getCommand("vanish")).setExecutor(new CommandVanish());
         Objects.requireNonNull(getCommand("nv")).setExecutor(new CommandNv());
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new CommandSpawn());
@@ -30,11 +29,15 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("alert")).setExecutor(new CommandAlert());
         Objects.requireNonNull(getCommand("freeze")).setExecutor(new CommandFreeze());
         Objects.requireNonNull(getCommand("spycmd")).setExecutor(new CommandSpy());
+        Objects.requireNonNull(getCommand("fakeleave")).setExecutor(new CommandFakeLeave());
+        Objects.requireNonNull(getCommand("track")).setExecutor(new CommandTrack());
+        Objects.requireNonNull(getCommand("track")).setTabCompleter(new CompleterTrack());
 
         getServer().getPluginManager().registerEvents(new VanishListener(), this);
         getServer().getPluginManager().registerEvents(new WatchOverListener(), this);
         getServer().getPluginManager().registerEvents(new FreezeListener(), this);
         getServer().getPluginManager().registerEvents(new SpyListener(), this);
+        getServer().getPluginManager().registerEvents(new TrackListener(), this);
 
         Bukkit.getConsoleSender().sendMessage("""
                 
