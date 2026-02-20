@@ -16,7 +16,7 @@ public class SpyListener implements Listener {
 
         for(Player p : CommandSpy.spyActived){
             if(!p.equals(player)){
-                p.sendMessage("§8[§7SPY§8] §7"+player.getDisplayName()+"§8 : "+cmd);
+                p.sendMessage("§8[§7SPY§8] §7"+player.getName()+"§8 : "+cmd);
             }
         }
     }

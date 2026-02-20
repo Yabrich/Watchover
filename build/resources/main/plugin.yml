@@ -6,7 +6,8 @@ authors: [ Yabrich ]
 commands:
   vanish:
     description: Active l'invisibilité pour les autres joueurs.
-    permission: wo
+    permission: wo.vanish
+    aliases: [wovanish]
   nv:
     description: Active la vision nocturne.
     permission: wo
@@ -29,5 +30,13 @@ commands:
     description: Empêche un joueur de bouger.
     permission: wo
   spycmd:
-    description: Affiche les commandes executées
+    description: Affiche les commandes executées.
+    aliases: [cmdspy]
     permission: wo
+  fakeleave:
+    description: Simule la déconnexion du serveur pour les autres joueurs.
+    permission: wo.vanish
+    aliases: [fl]
+  track:
+    description: Affiche la position relative d'un joueur sur l'action bar.
+    permission: wo.track
