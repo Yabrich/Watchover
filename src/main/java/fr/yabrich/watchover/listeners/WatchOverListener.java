@@ -1,25 +1,25 @@
 package fr.yabrich.watchover.listeners;
 
 import fr.yabrich.watchover.Main;
-import fr.yabrich.watchover.commands.CommandVanish;
 import fr.yabrich.watchover.commands.CommandWatchOver;
+import fr.yabrich.watchover.utils.FreezeManager;
 import fr.yabrich.watchover.utils.PlayerVanish;
-import fr.yabrich.watchover.utils.WatchOverBuilder;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
-import java.util.UUID;
 
 public class WatchOverListener implements Listener {
 
@@ -29,12 +29,10 @@ public class WatchOverListener implements Listener {
 
         if(CommandWatchOver.woActived.contains(player)){
             if(e.getHand() != EquipmentSlot.HAND) return;
-            e.setCancelled(true);
 
             ItemStack item = e.getItem();
-            assert item != null;
-            assert item.getItemMeta() != null;
-            String itemName = item.getItemMeta().getDisplayName();
+            if(item == null) return;
+            String itemName = Objects.requireNonNull(item.getItemMeta()).getDisplayName();
 
             // Vanish
             if(itemName.equalsIgnoreCase("§4§lVanish") || itemName.equalsIgnoreCase("§a§lVanish")) {
@@ -71,6 +69,51 @@ public class WatchOverListener implements Listener {
                 player.teleport(target);
                 player.sendMessage(Main.getPrefix()+"Téléportation sur §b"+target.getDisplayName()+"§3..");
                 return;
+            }
+
+            // NV
+            if(itemName.equalsIgnoreCase("§1§lNight Vision")){
+                e.setCancelled(true);
+                player.performCommand("watchover:nv");
+                return;
+            }
+
+            // Execption pose de bloc
+            if(itemName.equalsIgnoreCase("§9§lFreeze")){
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent e){
+        Player player = e.getPlayer();
+        Entity entity = e.getRightClicked();
+
+        if(CommandWatchOver.woActived.contains(player)){
+            if(e.getHand() != EquipmentSlot.HAND) return;
+            if(!(entity instanceof Player targetPlayer)) return;
+
+            ItemStack item = player.getInventory().getItemInMainHand();
+            String itemName = Objects.requireNonNull(item.getItemMeta()).getDisplayName();
+
+            // Invsee
+            if(itemName.equalsIgnoreCase("§e§lInvsee")){
+                player.openInventory(targetPlayer.getInventory());
+                player.sendMessage(Main.getPrefix()+"Inventaire de §b"+targetPlayer.getDisplayName());
+                return;
+            }
+
+            // Alert
+            if(itemName.equalsIgnoreCase("§c§lAlert")){
+                player.performCommand("watchover:alert "+targetPlayer.getDisplayName());
+                return;
+            }
+
+            // Freeze
+            if(itemName.equalsIgnoreCase("§9§lFreeze")){
+                e.setCancelled(true);
+                player.performCommand("watchover:freeze "+targetPlayer.getDisplayName());
             }
         }
     }

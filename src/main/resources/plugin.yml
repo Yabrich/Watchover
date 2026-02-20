@@ -6,13 +6,28 @@ authors: [ Yabrich ]
 commands:
   vanish:
     description: Active l'invisibilité pour les autres joueurs.
+    permission: wo
   nv:
     description: Active la vision nocturne.
+    permission: wo
   spawn:
     description: Téléporte au spawn.
+    permission: wo
   id:
     description: Donne des informations sur l'item tenu en main.
+    permission: wo
   s:
     description: Téléporte un joueur à sa position.
+    permission: wo
   wo:
     description: Passe en mode modération.
+    permission: wo
+  alert:
+    description: Envoie une alerte modération à un joueur.
+    permission: wo
+  freeze:
+    description: Empêche un joueur de bouger.
+    permission: wo
+  spycmd:
+    description: Affiche les commandes executées
+    permission: wo

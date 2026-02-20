@@ -1,6 +1,8 @@
 package fr.yabrich.watchover;
 
 import fr.yabrich.watchover.commands.*;
+import fr.yabrich.watchover.listeners.FreezeListener;
+import fr.yabrich.watchover.listeners.SpyListener;
 import fr.yabrich.watchover.listeners.VanishListener;
 import fr.yabrich.watchover.listeners.WatchOverListener;
 import org.bukkit.Bukkit;
@@ -25,9 +27,14 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("id")).setExecutor(new CommandId());
         Objects.requireNonNull(getCommand("s")).setExecutor(new CommandTPHere());
         Objects.requireNonNull(getCommand("wo")).setExecutor(new CommandWatchOver());
+        Objects.requireNonNull(getCommand("alert")).setExecutor(new CommandAlert());
+        Objects.requireNonNull(getCommand("freeze")).setExecutor(new CommandFreeze());
+        Objects.requireNonNull(getCommand("spycmd")).setExecutor(new CommandSpy());
 
         getServer().getPluginManager().registerEvents(new VanishListener(), this);
         getServer().getPluginManager().registerEvents(new WatchOverListener(), this);
+        getServer().getPluginManager().registerEvents(new FreezeListener(), this);
+        getServer().getPluginManager().registerEvents(new SpyListener(), this);
 
         Bukkit.getConsoleSender().sendMessage("""
                 
