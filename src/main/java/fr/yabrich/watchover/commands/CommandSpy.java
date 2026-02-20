@@ -14,21 +14,16 @@ public class CommandSpy implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if(sender instanceof Player player){
-            if(player.hasPermission("wo")){
-                if (!spyActived.contains(player)) {
-                    spyActived.add(player);
-                    player.sendMessage(Main.getPrefix()+"Vous avez §aactivé §3le spycmd !");
-                    return true;
-                }
-                else{
-                    spyActived.remove(player);
-                    player.sendMessage(Main.getPrefix()+"Vous avez §4désactivé §3le spycmd !");
-                    return true;
-                }
+            if(!spyActived.contains(player)) {
+                spyActived.add(player);
+                player.sendMessage(Main.getPrefix()+"Vous avez §aactivé §3le spycmd !");
             }
             else{
-                player.sendMessage(Main.getErrPrefix()+"Vous n'avez pas la permission d'éxécuter cette commande !");
+                spyActived.remove(player);
+                player.sendMessage(Main.getPrefix()+"Vous avez §4désactivé §3le spycmd !");
             }
+            return true;
+
         }
         return false;
     }
