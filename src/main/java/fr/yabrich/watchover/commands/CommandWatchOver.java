@@ -46,7 +46,7 @@ public class CommandWatchOver implements CommandExecutor {
                 woActived.remove(player);
 
 
-                player.sendMessage(Main.getPrefix()+"Menu modération §4déactivé §3!");
+                player.sendMessage(Main.getPrefix()+"Menu modération §4désactivé §3!");
                 player.sendMessage(Main.getPrefix()+"Vanish §4désactivé§3 !");
             }
         }
