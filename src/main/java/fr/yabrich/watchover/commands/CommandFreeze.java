@@ -27,6 +27,11 @@ public class CommandFreeze implements CommandExecutor {
                 return false;
             }
 
+            if(targetPlayer.hasPermission("wo.freeze")){
+                player.sendMessage(Main.getErrPrefix()+"Ce joueur est immunisé..");
+                return false;
+            }
+
             if(!FreezeManager.isPlayerFreezed(targetPlayer)){
                 FreezeManager.freezePlayer(targetPlayer);
                 player.sendMessage(Main.getPrefix()+"§b"+targetPlayer.getDisplayName()+" §3à bien été freeze.");
