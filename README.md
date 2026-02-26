@@ -40,7 +40,7 @@ Ce mode est conçu pour améliorer la réactivité et la discrétion du staff.
 * `/track <pseudo>` → Affiche la position relative d'un joueur
 * `/track cancel` → Stop le tracking
 
-### Coordonnées joueur :
+### Coordonnés joueurs :
 
 * `/playerxyz <pseudo>` → Affiche les coordonnées d'un joueur
 
@@ -191,28 +191,29 @@ Réponse staff :
 
 Voici la liste complète des permissions utilisées par Watchover :
 
-| Permission               | Description                  |
-|--------------------------|------------------------------|
-| wo.watchover             | Accès au /wo                 |
-| wo.watchoverstaff        | Accès au /wo staff           |
-| wo.vanish                | Accès au /vanish             |
-| wo.vanish.seeothers      | Voir les staffs invisibles   |
-| wo.staffvanish           | Accès au /staffvanish        |
-| wo.staffvanish.seeothers | Voir les staff invisibles    |
-| wo.nightvision           | Accès au /nv                 |
-| wo.spawn                 | Accès au /spawn              |
-| wo.id                    | Accès au /id                 |
-| wo.s                     | Accès au /s                  |
-| wo.alert                 | Accès au /alert              |
-| wo.freeze                | Accès au /freeze             |
-| wo.spycmd                | Accès au /spycmd             |
-| wo.track                 | Accès au /track              |
-| wo.playerxyz             | Accès au /playerxyz          |
-| wo.chat                  | Accès au /chat et /chatclear |
-| wo.helpme                | Accès au /helpme             |
-| wo.helpme.ans            | Accès au /ans                |
-| wo.report                | Accès au /report             |
-| wo.staffchat             | Accès au chat staff          |
+| Permission               | Description                        |
+|--------------------------|------------------------------------|
+| wo.watchover             | Accès au /wo                       |
+| wo.watchoverstaff        | Accès au /wo staff                 |
+| wo.vanish                | Accès au /vanish                   |
+| wo.vanish.seeothers      | Voir les staffs invisibles         |
+| wo.staffvanish           | Accès au /staffvanish              |
+| wo.staffvanish.seeothers | Voir les staff invisibles          |
+| wo.nightvision           | Accès au /nv                       |
+| wo.spawn                 | Accès au /spawn                    |
+| wo.id                    | Accès au /id                       |
+| wo.s                     | Accès au /s                        |
+| wo.alert                 | Accès au /alert                    |
+| wo.freeze                | Accès au /freeze                   |
+| wo.spycmd                | Accès au /spycmd                   |
+| wo.track                 | Accès au /track                    |
+| wo.playerxyz             | Accès au /playerxyz                |
+| wo.chat                  | Accès au /chat et /chatclear       |
+| wo.chat.bypass           | Outrepasse les modérations du chat |
+| wo.helpme                | Accès au /helpme                   |
+| wo.helpme.ans            | Accès au /ans                      |
+| wo.report                | Accès au /report                   |
+| wo.staffchat             | Accès au chat staff                |
 
 ---
 
