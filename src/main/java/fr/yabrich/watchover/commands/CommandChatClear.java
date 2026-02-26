@@ -17,7 +17,7 @@ public class CommandChatClear implements CommandExecutor {
             }
             Bukkit.broadcastMessage(Main.getPrefix()+"Le chat a été clear..");
             for(Player p : Bukkit.getOnlinePlayers()){
-                if(p.hasPermission("wo.chatclear")){
+                if(p.hasPermission("wo.chat")){
                     p.sendMessage(Main.getPrefix()+"ChatClear par §b"+player.getName());
                 }
             }
