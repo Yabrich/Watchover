@@ -3,6 +3,11 @@ version: '2.0'
 main: fr.yabrich.watchover.Main
 api-version: '1.21'
 authors: [ Yabrich ]
+website: https://github.com/Yabrich/Watchover
+description: Plugin de modération
+softdepend:
+  - LuckPerms
+  - Essentials
 commands:
   vanish:
     description: Active l'invisibilité pour les autres joueurs.
