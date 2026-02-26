@@ -40,8 +40,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 tasks.jar{
-    destinationDirectory = file("out")
-    //destinationDirectory = file("C:\\Users\\Yabrich\\Documents\\server_map_cyl_121\\plugins")
+    //destinationDirectory = file("out")
+    destinationDirectory = file("C:\\Users\\Yabrich\\Documents\\server_map_cyl_121\\plugins")
 }
 
 processResources {

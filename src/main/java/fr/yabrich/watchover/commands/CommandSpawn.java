@@ -11,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandSpawn implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if(commandSender instanceof Player player){
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+        if(sender instanceof Player player){
             World world = player.getWorld();
             Location spawn = world.getSpawnLocation();
 
@@ -21,6 +21,7 @@ public class CommandSpawn implements CommandExecutor {
 
             return true;
         }
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
         return false;
     }
 }

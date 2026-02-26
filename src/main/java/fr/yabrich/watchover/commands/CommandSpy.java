@@ -23,8 +23,8 @@ public class CommandSpy implements CommandExecutor {
                 player.sendMessage(Main.getPrefix()+"Vous avez §4désactivé §3le spycmd !");
             }
             return true;
-
         }
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
         return false;
     }
 }

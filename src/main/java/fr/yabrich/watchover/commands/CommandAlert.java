@@ -34,6 +34,7 @@ public class CommandAlert implements CommandExecutor {
             player.sendMessage("§4[§6WatchOver§4] §3Alerte envoyée à §e"+targetPlayer.getDisplayName());
             return true;
         }
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
         return false;
     }
 }

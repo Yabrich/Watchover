@@ -12,8 +12,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandId implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if(commandSender instanceof Player player){
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+        if(sender instanceof Player player){
             ItemStack item = player.getInventory().getItemInMainHand();
             Material material = item.getType();
 
@@ -25,7 +25,7 @@ public class CommandId implements CommandExecutor {
             player.sendMessage(Main.getPrefix()+"§3Votre item : "+material);
             return true;
         }
-
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
         return false;
     }
 }

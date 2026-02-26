@@ -53,7 +53,9 @@ public class CommandTrack implements CommandExecutor {
                 TrackerManager.removeTarget(player, targetPlayer);
                 player.sendMessage(Main.getPrefix()+ChatColor.AQUA+targetPlayer.getDisplayName()+" §3n'est maintenant plus tracké.");
             }
+            return true;
         }
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
         return false;
     }
 }
