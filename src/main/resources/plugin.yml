@@ -8,35 +8,84 @@ commands:
     description: Active l'invisibilité pour les autres joueurs.
     permission: wo.vanish
     aliases: [wovanish]
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+  staffvanish:
+    description: Active l'invisibilité pour les autres staffs/joueurs.
+    permission: wo.staffvanish
+    aliases: [sv]
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
   nv:
     description: Active la vision nocturne.
-    permission: wo
+    permission: wo.nightvision
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
   spawn:
     description: Téléporte au spawn.
-    permission: wo
+    permission: wo.spawn
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
   id:
     description: Donne des informations sur l'item tenu en main.
-    permission: wo
+    permission: wo.id
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
   s:
     description: Téléporte un joueur à sa position.
-    permission: wo
+    permission: wo.s
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /s [pseudo]
   wo:
     description: Passe en mode modération.
-    permission: wo
+    permission: wo.watchover
   alert:
     description: Envoie une alerte modération à un joueur.
-    permission: wo
+    permission: wo.alert
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /alert [pseudo]
   freeze:
     description: Empêche un joueur de bouger.
-    permission: wo
+    permission: wo.freeze
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /freeze [pseudo]
   spycmd:
     description: Affiche les commandes executées.
     aliases: [cmdspy]
-    permission: wo
-  fakeleave:
-    description: Simule la déconnexion du serveur pour les autres joueurs.
-    permission: wo.vanish
-    aliases: [fl]
+    permission: wo.spycmd
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
   track:
     description: Affiche la position relative d'un joueur sur l'action bar.
     permission: wo.track
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /track [pseudo/cancel]
+  playerxyz:
+    description: Affiche les coordonnées d'un joueur.
+    permission: wo.playerxyz
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /playerxyz [pseudo]
+  chatclear:
+    description: Clear le chat.
+    permission: wo.chat
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    aliases: [cc]
+  chat:
+    description: Modération chat.
+    permission: wo.chat
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /chat [enable/disable/slowmode]
+  helpme:
+    description: Aide modération.
+    permission: wo.helpme
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /helpme [question]
+  ans:
+    description: Réponds à une question.
+    permission: wo.helpme.ans
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /ans [pseudo] [réponse]
+  report:
+    description: Signalement de joueur.
+    permission: wo.report
+    permission-message: §4Vous n'avez pas la permission d'effectuer cette commande !
+    usage: /report [pseudo] [raison]
+  staffchat:
+    description: Chat staff.
+    permission: wo.staffchat
+    aliases: [sc]
+    usage: /sc [message]

@@ -11,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandNv implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if(commandSender instanceof Player player) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+        if(sender instanceof Player player) {
             PotionEffectType nv = PotionEffectType.NIGHT_VISION;
 
             if(player.getPotionEffect(nv) == null) {
@@ -23,8 +23,9 @@ public class CommandNv implements CommandExecutor {
                 player.removePotionEffect(nv);
                 player.sendMessage(Main.getPrefix()+"§3Vision Nocturne §4désactivée §3!");
             }
-
+            return true;
         }
-        return true;
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
+        return false;
     }
 }

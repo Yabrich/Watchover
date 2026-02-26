@@ -9,12 +9,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class WatchOverBuilder {
-    public static Inventory createWOInventory(){
+    public static Inventory createWOInventory(boolean sv){
         Inventory inventory = Bukkit.createInventory(null,36);
 
-        //1. Vanish
-        ItemStack vanish = createItem("§a§lVanish", Material.MAGMA_CREAM);
-        inventory.setItem(0,vanish);
+        //1. SV/Vanish
+        if(sv){
+            ItemStack staffvanish = createItem("§a§lStaffVanish", Material.GLISTERING_MELON_SLICE);
+            inventory.setItem(0,staffvanish);
+        }else{
+            ItemStack vanish = createItem("§a§lVanish", Material.MAGMA_CREAM);
+            inventory.setItem(0,vanish);
+        }
 
         //2. Alert
         ItemStack alert = createItem("§c§lAlert", Material.PAPER);

@@ -7,13 +7,21 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.UUID;
 
 public class PlayerVanish {
 
-    private static final ArrayList<Player> vanished = new ArrayList<Player>();
+    private static final ArrayList<UUID> vanished = new ArrayList<>();
+    private static final ArrayList<UUID> staffvanished = new ArrayList<>();
 
-    public static void vanishPlayer(Player player) {
-        vanished.add(player);
+    public static void vanishPlayer(Player player, boolean sv) {
+        if(sv){
+            staffvanished.add(player.getUniqueId());
+        }
+        else {
+            vanished.add(player.getUniqueId());
+        }
 
         Location loc = player.getLocation().add(0, 1, 0);
 
@@ -26,12 +34,22 @@ public class PlayerVanish {
         );
 
         for(Player p : Bukkit.getOnlinePlayers()){
-            p.hidePlayer(Main.getInstance(), player);
+            if(sv){
+                if(!p.hasPermission("wo.staffvanish.seeothers")){
+                    hideStaffVanishedPlayers(p);
+                }
+            }
+            else{
+                if(!p.hasPermission("wo.vanish.seeothers")){
+                    hideVanishedPlayers(p);
+                }
+            }
         }
     }
 
     public static void unvanishPlayer(Player player){
-        vanished.remove(player);
+        staffvanished.remove(player.getUniqueId());
+        vanished.remove(player.getUniqueId());
 
         Location loc = player.getLocation().add(0, 1, 0);
 
@@ -49,12 +67,23 @@ public class PlayerVanish {
     }
 
     public static boolean isPlayerVanished(Player player){
-        return vanished.contains(player);
+        return vanished.contains(player.getUniqueId());
+    }
+
+    public static boolean isPlayerStaffVanished(Player player){
+        return staffvanished.contains(player.getUniqueId());
     }
 
     public static void hideVanishedPlayers(Player player){
-        for(Player pvanished : vanished){
-            player.hidePlayer(Main.getInstance(), pvanished);
+
+        for(UUID idPVanished : vanished){
+            player.hidePlayer(Main.getInstance(), Objects.requireNonNull(Bukkit.getPlayer(idPVanished)));
+        }
+    }
+
+    public static void hideStaffVanishedPlayers(Player player){
+        for(UUID idPVanished : staffvanished){
+            player.hidePlayer(Main.getInstance(), Objects.requireNonNull(Bukkit.getPlayer(idPVanished)));
         }
     }
 }

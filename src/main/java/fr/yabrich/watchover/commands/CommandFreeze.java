@@ -37,6 +37,7 @@ public class CommandFreeze implements CommandExecutor {
 
             return true;
         }
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
         return false;
     }
 }

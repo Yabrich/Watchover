@@ -28,7 +28,9 @@ public class CommandTPHere implements CommandExecutor {
             targetPlayer.teleport(player.getLocation());
             player.sendMessage(Main.getPrefix()+"Vous avez téléporté §b"+targetPlayer.getDisplayName()+" §3à vous.");
             targetPlayer.sendMessage(Main.getPrefix()+"Vous avez été téléporté.");
+            return true;
         }
+        sender.sendMessage(Main.getErrPrefix()+"Vous devez être un joueur pour faire ça..");
         return false;
     }
 }

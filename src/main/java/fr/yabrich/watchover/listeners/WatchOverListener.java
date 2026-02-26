@@ -2,15 +2,14 @@ package fr.yabrich.watchover.listeners;
 
 import fr.yabrich.watchover.Main;
 import fr.yabrich.watchover.commands.CommandWatchOver;
-import fr.yabrich.watchover.utils.FreezeManager;
 import fr.yabrich.watchover.utils.PlayerVanish;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -27,7 +26,7 @@ public class WatchOverListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e){
         Player player = e.getPlayer();
 
-        if(CommandWatchOver.woActived.contains(player)){
+        if(CommandWatchOver.woActived.contains(player.getUniqueId())){
             if(e.getHand() != EquipmentSlot.HAND) return;
 
             ItemStack item = e.getItem();
@@ -45,6 +44,24 @@ public class WatchOverListener implements Listener {
                 }
                 else {
                     itmeta.setDisplayName("§a§lVanish");
+                    itmeta.addEnchant(Enchantment.EFFICIENCY, 1, true);
+                }
+
+                item.setItemMeta(itmeta);
+                return;
+            }
+
+            // StaffVanish
+            if(itemName.equalsIgnoreCase("§4§lStaffVanish") || itemName.equalsIgnoreCase("§a§lStaffVanish")) {
+                player.performCommand("watchover:staffvanish");
+                ItemMeta itmeta = item.getItemMeta();
+
+                if(!PlayerVanish.isPlayerStaffVanished(player)) {
+                    itmeta.setDisplayName("§4§lStaffVanish");
+                    itmeta.removeEnchantments();
+                }
+                else {
+                    itmeta.setDisplayName("§a§lStaffVanish");
                     itmeta.addEnchant(Enchantment.EFFICIENCY, 1, true);
                 }
 
@@ -90,7 +107,7 @@ public class WatchOverListener implements Listener {
         Player player = e.getPlayer();
         Entity entity = e.getRightClicked();
 
-        if(CommandWatchOver.woActived.contains(player)){
+        if(CommandWatchOver.woActived.contains(player.getUniqueId())){
             if(e.getHand() != EquipmentSlot.HAND) return;
             if(!(entity instanceof Player targetPlayer)) return;
 

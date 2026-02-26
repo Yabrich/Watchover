@@ -1,25 +1,42 @@
 package fr.yabrich.watchover.listeners;
 
+import fr.yabrich.watchover.Main;
 import fr.yabrich.watchover.utils.PlayerVanish;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+
+import static fr.yabrich.watchover.utils.PlayerVanish.hideStaffVanishedPlayers;
+import static fr.yabrich.watchover.utils.PlayerVanish.hideVanishedPlayers;
 
 public class VanishListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
-        PlayerVanish.hideVanishedPlayers(player);
-    }
+        if(!player.hasPermission("wo.staffvanish.seeothers")){
+            hideStaffVanishedPlayers(player);
+        }
+        if(!player.hasPermission("wo.vanish.seeothers")){
+            hideVanishedPlayers(player);
+        }
 
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent e){
-        Player player = e.getPlayer();
         if(PlayerVanish.isPlayerVanished(player)){
-            PlayerVanish.unvanishPlayer(player);
+            for(Player p : Bukkit.getOnlinePlayers()){
+                if(!p.hasPermission("wo.vanish.seeothers")){
+                    hideVanishedPlayers(p);
+                }
+            }
+        }
+
+        if(PlayerVanish.isPlayerStaffVanished(player)){
+            for(Player p : Bukkit.getOnlinePlayers()){
+                if(!p.hasPermission("wo.staffvanish.seeothers")){
+                    hideStaffVanishedPlayers(p);
+                }
+            }
         }
     }
 }
