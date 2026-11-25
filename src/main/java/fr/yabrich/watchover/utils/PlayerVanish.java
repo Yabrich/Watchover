@@ -7,7 +7,6 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.UUID;
 
 public class PlayerVanish {
@@ -77,13 +76,19 @@ public class PlayerVanish {
     public static void hideVanishedPlayers(Player player){
 
         for(UUID idPVanished : vanished){
-            player.hidePlayer(Main.getInstance(), Objects.requireNonNull(Bukkit.getPlayer(idPVanished)));
+            Player target = Bukkit.getPlayer(idPVanished);
+            if(target != null){
+                player.hidePlayer(Main.getInstance(), target);
+            }
         }
     }
 
     public static void hideStaffVanishedPlayers(Player player){
         for(UUID idPVanished : staffvanished){
-            player.hidePlayer(Main.getInstance(), Objects.requireNonNull(Bukkit.getPlayer(idPVanished)));
+            Player target = Bukkit.getPlayer(idPVanished);
+            if(target != null){
+                player.hidePlayer(Main.getInstance(), target);
+            }
         }
     }
 }
